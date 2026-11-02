@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}GradeMind - About{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>ℹ️ About GradeMind</h1>
+</section>
+
+<div class="about-container" id="about-container">
+    
+    <div class="about-card">
+        <h2>🎯 Problem Statement</h2>
+        <p>
+            Educational institutions need data-driven methods to identify students who may be at risk 
+            of underperforming, so that timely interventions can be made. Manual evaluation alone is 
+            insufficient when dealing with large student populations. GradeMind addresses this by 
+            using machine learning to predict student performance based on academic indicators.
+        </p>
+    </div>
+
+    <div class="about-card">
+        <h2>💡 Solution</h2>
+        <p>
+            GradeMind is an AI-based web application that predicts whether a student will achieve 
+            <strong>Pass</strong>, <strong>Merit</strong>, or <strong>Distinction</strong> based on 
+            five key academic features:
+        </p>
+        <ul>
+            <li>Attendance Percentage</li>
+            <li>Internal Marks</li>
+            <li>Assignment Score</li>
+            <li>Study Hours Per Week</li>
+            <li>Previous GPA</li>
+        </ul>
+    </div>
+
+    <div class="about-card">
+        <h2>🤖 Machine Learning Model</h2>
+        <p>
+            The system uses a <strong>Random Forest Classifier</strong> trained on a synthetic 
+            dataset of 1000 student records. The model is evaluated using standard metrics 
+            (Accuracy, Precision, Recall, F1-Score) and tracked using MLflow for experiment 
+            reproducibility.
+        </p>
+    </div>
+
+    <div class="about-card">
+        <h2>🏗️ Architecture</h2>
+        <div class="architecture-flow">
+            <div class="arch-step">User Input</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">Flask Web App</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">ML Model</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">Prediction</div>
+        </div>
+    </div>
+
+    <div class="about-card">
+        <h2>📚 Syllabus Coverage (CO1–CO4)</h2>
+        <table class="about-table">
+            <thead>
+                <tr>
+                    <th>CO</th>
+                    <th>Topic</th>
+                    <th>Implementation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CO1</td>
+                    <td>Software Engineering &amp; Agile</td>
+                    <td>SDLC, Scrum, User Stories, Backlog</td>
+                </tr>
+                <tr>
+                    <td>CO2</td>
+                    <td>DevOps Fundamentals</td>
+                    <td>Git, CI/CD, Docker, Kubernetes, Monitoring</td>
+                </tr>
+                <tr>
+                    <td>CO3</td>
+                    <td>DevSecOps &amp; MLOps</td>
+                    <td>Bandit, OWASP, Trivy, MLflow, DVC</td>
+                </tr>
+                <tr>
+                    <td>CO4</td>
+                    <td>Cloud MLOps</td>
+                    <td>AWS S3, EC2, SageMaker concepts</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="about-card">
+        <h2>🛠️ Technology Stack</h2>
+        <div class="tech-grid">
+            <span class="tech-badge">Python 3.11</span>
+            <span class="tech-badge">Flask</span>
+            <span class="tech-badge">scikit-learn</span>
+            <span class="tech-badge">pandas</span>
+            <span class="tech-badge">NumPy</span>
+            <span class="tech-badge">MLflow</span>
+            <span class="tech-badge">DVC</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">Kubernetes</span>
+            <span class="tech-badge">GitHub Actions</span>
+            <span class="tech-badge">Prometheus</span>
+            <span class="tech-badge">Grafana</span>
+            <span class="tech-badge">Bandit</span>
+            <span class="tech-badge">Trivy</span>
+            <span class="tech-badge">OWASP ZAP</span>
+            <span class="tech-badge">pytest</span>
+        </div>
+    </div>
+
+    <div class="about-card">
+        <h2>⚠️ Disclaimer</h2>
+        <p>
+            This project uses <strong>synthetic data</strong> and is created for educational purposes. 
+            The predictions are for demonstration only and should not be used for actual academic 
+            decisions. No real student data is collected, stored, or processed.
+        </p>
+    </div>
+</div>
+{% endblock %}

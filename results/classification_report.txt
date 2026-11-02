@@ -1,0 +1,13 @@
+GradeMind - Model Classification Report
+==================================================
+
+              precision    recall  f1-score   support
+
+ Distinction       0.93      0.90      0.92        60
+       Merit       0.86      0.94      0.89        95
+        Pass       0.95      0.80      0.87        45
+
+    accuracy                           0.90       200
+   macro avg       0.91      0.88      0.89       200
+weighted avg       0.90      0.90      0.89       200
+

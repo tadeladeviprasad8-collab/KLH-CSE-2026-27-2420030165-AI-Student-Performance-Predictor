@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}GradeMind - Prediction Result{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>📊 Prediction Result</h1>
+</section>
+
+<div class="result-container" id="result-container">
+    
+    <!-- Prediction Result Card -->
+    <div class="result-card 
+        {% if prediction == 'Distinction' %}result-distinction
+        {% elif prediction == 'Merit' %}result-merit
+        {% else %}result-pass{% endif %}" 
+        id="result-card">
+        
+        <h2>Student Performance Prediction</h2>
+        <div class="result-grade" id="result-grade">
+            {% if prediction == 'Distinction' %}🌟{% elif prediction == 'Merit' %}✨{% else %}✅{% endif %}
+            {{ prediction }}
+        </div>
+        <p class="result-description">
+            {% if prediction == 'Distinction' %}
+                Excellent! The student is predicted to achieve a <strong>Distinction</strong> grade.
+            {% elif prediction == 'Merit' %}
+                Good performance! The student is predicted to achieve a <strong>Merit</strong> grade.
+            {% else %}
+                The student is predicted to <strong>Pass</strong>. Consider additional support to improve performance.
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- Input Summary -->
+    <div class="input-summary" id="input-summary">
+        <h3>📋 Input Summary</h3>
+        <table class="summary-table">
+            <tbody>
+                <tr>
+                    <td class="label-cell">Student ID</td>
+                    <td class="value-cell">{{ input_data.student_id }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Student Name</td>
+                    <td class="value-cell">{{ input_data.student_name }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Attendance</td>
+                    <td class="value-cell">{{ input_data.attendance_pct }}%</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Internal Marks</td>
+                    <td class="value-cell">{{ input_data.internal_marks }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Assignment Score</td>
+                    <td class="value-cell">{{ input_data.assignment_score }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Study Hours / Week</td>
+                    <td class="value-cell">{{ input_data.study_hours_per_week }} hrs</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Previous GPA</td>
+                    <td class="value-cell">{{ input_data.previous_gpa }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="result-actions">
+        {% if db_id %}
+        <a href="{{ url_for('student_details', db_id=db_id) }}" class="btn btn-primary" id="btn-view-record">
+            View Saved Record
+        </a>
+        {% endif %}
+        <a href="{{ url_for('predict') }}" class="btn btn-secondary" id="btn-predict-again">
+            Make Another Prediction
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}GradeMind - Student Analytics{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>📊 Student Analytics Dashboard</h1>
+    <p>Overview of academic performance data from {{ stats.total_students }} students.</p>
+</section>
+
+<!-- Grade Distribution Cards -->
+<div class="analytics-section" id="grade-distribution">
+    <h2 class="section-title">Grade Distribution</h2>
+    <div class="stats-grid">
+        <div class="stat-card stat-total" id="stat-total">
+            <div class="stat-number">{{ stats.total_students }}</div>
+            <div class="stat-label">Total Students</div>
+        </div>
+        <div class="stat-card stat-distinction" id="stat-distinction">
+            <div class="stat-number">{{ stats.distinction_count }}</div>
+            <div class="stat-label">Distinction ({{ stats.distinction_pct }}%)</div>
+        </div>
+        <div class="stat-card stat-merit" id="stat-merit">
+            <div class="stat-number">{{ stats.merit_count }}</div>
+            <div class="stat-label">Merit ({{ stats.merit_pct }}%)</div>
+        </div>
+        <div class="stat-card stat-pass" id="stat-pass">
+            <div class="stat-number">{{ stats.pass_count }}</div>
+            <div class="stat-label">Pass ({{ stats.pass_pct }}%)</div>
+        </div>
+    </div>
+</div>
+
+<!-- Visual Grade Bar -->
+<div class="analytics-section" id="grade-bar-section">
+    <h2 class="section-title">Grade Distribution Bar</h2>
+    <div class="grade-bar">
+        <div class="grade-bar-segment bar-distinction" 
+             style="width: {{ stats.distinction_pct }}%"
+             title="Distinction: {{ stats.distinction_pct }}%">
+            {{ stats.distinction_pct }}%
+        </div>
+        <div class="grade-bar-segment bar-merit" 
+             style="width: {{ stats.merit_pct }}%"
+             title="Merit: {{ stats.merit_pct }}%">
+            {{ stats.merit_pct }}%
+        </div>
+        <div class="grade-bar-segment bar-pass" 
+             style="width: {{ stats.pass_pct }}%"
+             title="Pass: {{ stats.pass_pct }}%">
+            {{ stats.pass_pct }}%
+        </div>
+    </div>
+    <div class="grade-bar-legend">
+        <span class="legend-item"><span class="legend-color legend-distinction"></span> Distinction</span>
+        <span class="legend-item"><span class="legend-color legend-merit"></span> Merit</span>
+        <span class="legend-item"><span class="legend-color legend-pass"></span> Pass</span>
+    </div>
+</div>
+
+<!-- Average Metrics -->
+<div class="analytics-section" id="avg-metrics">
+    <h2 class="section-title">Average Academic Metrics</h2>
+    <div class="metrics-table-container">
+        <table class="metrics-table" id="metrics-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Average Value</th>
+                    <th>Scale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>📅 Attendance</td>
+                    <td><strong>{{ stats.avg_attendance }}%</strong></td>
+                    <td>0 – 100%</td>
+                </tr>
+                <tr>
+                    <td>📝 Internal Marks</td>
+                    <td><strong>{{ stats.avg_internal_marks }}</strong></td>
+                    <td>0 – 100</td>
+                </tr>
+                <tr>
+                    <td>📄 Assignment Score</td>
+                    <td><strong>{{ stats.avg_assignment_score }}</strong></td>
+                    <td>0 – 100</td>
+                </tr>
+                <tr>
+                    <td>⏰ Study Hours / Week</td>
+                    <td><strong>{{ stats.avg_study_hours }} hrs</strong></td>
+                    <td>0 – 30 hrs</td>
+                </tr>
+                <tr>
+                    <td>🎯 Previous GPA</td>
+                    <td><strong>{{ stats.avg_gpa }}</strong></td>
+                    <td>0 – 10</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="analytics-actions">
+    <a href="{{ url_for('predict') }}" class="btn btn-primary" id="btn-predict-from-analytics">
+        Make a Prediction
+    </a>
+</div>
+{% endblock %}

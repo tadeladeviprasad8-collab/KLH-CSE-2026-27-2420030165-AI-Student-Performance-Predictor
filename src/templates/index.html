@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}GradeMind - Home{% endblock %}
+
+{% block content %}
+<section class="hero" id="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">🎓 GradeMind</h1>
+        <p class="hero-subtitle">AI-Based Academic Performance Prediction &amp; Student Analytics</p>
+        <p class="hero-description">
+            GradeMind uses Machine Learning to predict student academic performance 
+            based on attendance, marks, study habits, and previous GPA. 
+            Helping educators make data-driven decisions.
+        </p>
+        <div class="hero-actions">
+            <a href="{{ url_for('predict') }}" class="btn btn-primary" id="btn-predict-hero">
+                Make a Prediction
+            </a>
+            <a href="{{ url_for('analytics') }}" class="btn btn-secondary" id="btn-analytics-hero">
+                View Analytics
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="features-section" id="features-section">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+        <div class="feature-card" id="feature-prediction">
+            <div class="feature-icon">🤖</div>
+            <h3>ML Prediction</h3>
+            <p>Random Forest Classifier trained on 1000+ student records to predict Pass, Merit, or Distinction.</p>
+        </div>
+        <div class="feature-card" id="feature-analytics">
+            <div class="feature-icon">📊</div>
+            <h3>Student Analytics</h3>
+            <p>Comprehensive dashboard showing grade distribution, averages, and key academic metrics.</p>
+        </div>
+        <div class="feature-card" id="feature-mlops">
+            <div class="feature-icon">⚙️</div>
+            <h3>MLOps Pipeline</h3>
+            <p>End-to-end ML lifecycle with MLflow tracking, DVC versioning, and CI/CD automation.</p>
+        </div>
+        <div class="feature-card" id="feature-security">
+            <div class="feature-icon">🔒</div>
+            <h3>DevSecOps</h3>
+            <p>Security-first approach with Bandit, pip-audit, SonarQube, OWASP ZAP, and Trivy scanning.</p>
+        </div>
+        <div class="feature-card" id="feature-docker">
+            <div class="feature-icon">🐳</div>
+            <h3>Containerized</h3>
+            <p>Docker containerization with Kubernetes deployment support via Minikube.</p>
+        </div>
+        <div class="feature-card" id="feature-monitoring">
+            <div class="feature-icon">📈</div>
+            <h3>Monitoring</h3>
+            <p>Application monitoring with Prometheus metrics and Grafana dashboards.</p>
+        </div>
+    </div>
+</section>
+
+<section class="tech-section" id="tech-section">
+    <h2 class="section-title">Technology Stack</h2>
+    <div class="tech-grid">
+        <span class="tech-badge">Python 3.11</span>
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">scikit-learn</span>
+        <span class="tech-badge">MLflow</span>
+        <span class="tech-badge">DVC</span>
+        <span class="tech-badge">Docker</span>
+        <span class="tech-badge">Kubernetes</span>
+        <span class="tech-badge">GitHub Actions</span>
+        <span class="tech-badge">Prometheus</span>
+        <span class="tech-badge">Grafana</span>
+    </div>
+</section>
+{% endblock %}

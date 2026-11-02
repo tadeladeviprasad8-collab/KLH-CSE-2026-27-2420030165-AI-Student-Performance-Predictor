@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}GradeMind - Student Details{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>👤 Student Details</h1>
+    <p>Viewing record for {{ student.student_name }}</p>
+</section>
+
+<div class="result-container">
+    <div class="input-summary" style="margin-bottom: 2rem;">
+        <h3>Student Information</h3>
+        <table class="summary-table">
+            <tbody>
+                <tr>
+                    <td class="label-cell">Student ID</td>
+                    <td class="value-cell">{{ student.student_id }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Student Name</td>
+                    <td class="value-cell">{{ student.student_name }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Attendance</td>
+                    <td class="value-cell">{{ student.attendance_pct }}%</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Internal Marks</td>
+                    <td class="value-cell">{{ student.internal_marks }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Assignment Score</td>
+                    <td class="value-cell">{{ student.assignment_score }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Study Hours / Week</td>
+                    <td class="value-cell">{{ student.study_hours_per_week }} hrs</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Previous GPA</td>
+                    <td class="value-cell">{{ student.previous_gpa }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Predicted Performance</td>
+                    <td class="value-cell">
+                        <strong class="text-{{ student.predicted_grade | lower }}">
+                            {{ student.predicted_grade }}
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Prediction Date</td>
+                    <td class="value-cell">{{ student.created_at }} (UTC)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="details-actions">
+        <a href="{{ url_for('students') }}" class="btn btn-secondary">← Back to List</a>
+        
+        <form method="POST" action="{{ url_for('delete_student_record', db_id=student.id) }}" 
+              onsubmit="return confirm('Are you sure you want to delete this student record?');"
+              style="display: inline-block;">
+            <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

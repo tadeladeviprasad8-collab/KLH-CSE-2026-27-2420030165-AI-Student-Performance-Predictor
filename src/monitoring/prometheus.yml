@@ -1,0 +1,20 @@
+# GradeMind - Prometheus Configuration
+# Scrapes metrics from the Flask application
+
+global:
+  scrape_interval: 15s          # How often to collect metrics
+  evaluation_interval: 15s      # How often to evaluate rules
+
+# Scrape configurations
+scrape_configs:
+  # Job 1: Scrape metrics from the GradeMind Flask application
+  - job_name: "grademind"
+    static_configs:
+      - targets: ["localhost:5000"]   # Flask app exposes /metrics endpoint
+    metrics_path: "/metrics"          # Prometheus metrics endpoint
+    scrape_interval: 10s
+
+  # Job 2: Prometheus self-monitoring
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]   # Prometheus itself

@@ -1,0 +1,36 @@
+# GradeMind - Kubernetes Deployment
+# Deploys the GradeMind Flask container as a Kubernetes Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grademind-deployment
+  labels:
+    app: grademind
+spec:
+  replicas: 2                    # Run 2 copies for availability
+  selector:
+    matchLabels:
+      app: grademind
+  template:
+    metadata:
+      labels:
+        app: grademind
+    spec:
+      containers:
+        - name: grademind
+          image: grademind:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: FLASK_SECRET_KEY
+              value: "k8s-secret-change-in-production"
+            - name: PORT
+              value: "5000"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

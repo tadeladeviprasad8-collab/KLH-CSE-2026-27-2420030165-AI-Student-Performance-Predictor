@@ -1,0 +1,18 @@
+# GradeMind - Kubernetes Service
+# Exposes the GradeMind Deployment as a NodePort Service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: grademind-service
+  labels:
+    app: grademind
+spec:
+  type: NodePort               # NodePort allows access from outside the cluster
+  selector:
+    app: grademind              # Route traffic to pods with this label
+  ports:
+    - protocol: TCP
+      port: 80                  # Service port (cluster-internal)
+      targetPort: 5000          # Container port (Flask)
+      nodePort: 30500           # External port (access via Minikube)

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GradeMind - AI-Based Academic Performance Prediction & Student Analytics">
+    <title>{% block title %}GradeMind{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="main-nav">
+        <div class="nav-brand">
+            <a href="{{ url_for('home') }}" id="nav-logo">🎓 GradeMind</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}" id="nav-home">Home</a></li>
+            <li><a href="{{ url_for('predict') }}" id="nav-predict">Prediction</a></li>
+            <li><a href="{{ url_for('students') }}" id="nav-students">Previous Students</a></li>
+            <li><a href="{{ url_for('analytics') }}" id="nav-analytics">Student Analytics</a></li>
+            <li><a href="{{ url_for('about') }}" id="nav-about">About Project</a></li>
+        </ul>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}" id="flash-msg">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Error Message (for error pages) -->
+    {% if error_message %}
+        <div class="container">
+            <div class="error-page">
+                <h1>{{ error_message }}</h1>
+                <p><a href="{{ url_for('home') }}">Return to Home</a></p>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 GradeMind — AI-Based Academic Performance Prediction</p>
+            <p class="footer-sub">Built with Flask, scikit-learn, MLflow &amp; Docker</p>
+        </div>
+    </footer>
+
+</body>
+</html>

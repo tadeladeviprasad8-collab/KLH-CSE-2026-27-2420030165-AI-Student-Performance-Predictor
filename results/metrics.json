@@ -1,0 +1,25 @@
+{
+    "model_type": "RandomForestClassifier",
+    "parameters": {
+        "n_estimators": 100,
+        "max_depth": 10,
+        "min_samples_split": 5,
+        "min_samples_leaf": 2,
+        "random_state": 42
+    },
+    "evaluation_metrics": {
+        "accuracy": 0.895,
+        "precision_weighted": 0.899,
+        "recall_weighted": 0.895,
+        "f1_weighted": 0.8946,
+        "cross_val_5fold_mean": 0.867,
+        "cross_val_5fold_std": 0.0175
+    },
+    "feature_importances": {
+        "internal_marks": 0.2749,
+        "previous_gpa": 0.2364,
+        "assignment_score": 0.1956,
+        "attendance_pct": 0.152,
+        "study_hours_per_week": 0.1412
+    }
+}
